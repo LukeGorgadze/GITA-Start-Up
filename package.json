@@ -24,6 +24,7 @@
     "nodemailer": "^6.7.8",
     "nodemon": "^2.0.19",
     "react-cookie": "^4.1.1",
+    "react-icons": "^4.4.0",
     "react-router-dom": "^6.3.0",
     "react-toastify": "^9.0.8",
     "xpress": "^2.4.6"
