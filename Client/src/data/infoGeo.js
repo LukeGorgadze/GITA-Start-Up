@@ -1,0 +1,27 @@
+export const GeoInfo = 
+    {
+        locationBar: `აირჩიე ლოკაცია`,
+        languageSettings: `აირჩიე ენა`,
+        dontHaveAccount: `არ გაქვთ ანგარიში?`,
+        cafes: `კაფე`,
+        restaurants: `რესტორანი`,
+        welcome: `მშვიდობა თქვენდა`,
+        login: `შესვლა`,
+        submit: `გაუშვი`,
+        register: `რეგისტრაცია`,
+        tbilisi: `თბილისი`,
+        kutaisi: `ქუთაისი`,
+        telavi: `თელავი`,
+        placeOffers: `რას გთავაზობენ`,
+        whereUat: `სად იქნები`,
+        reviews: `შეფასებები`,
+        Addreview: `დაამატე შეფასება`,
+        send: `გაგზავნა`,
+        logout: `გამოსვლა`,
+        greet: `გამარჯობა`,
+        linkSent:`Link sent to your email, verify your account`,
+        contactUs: `დაგვიკავშირდით`,
+        currentCity: `არჩეული ქალაქი`,
+        checkDeveloper: `დეველოპერი`,
+        back:`უკან`
+    }

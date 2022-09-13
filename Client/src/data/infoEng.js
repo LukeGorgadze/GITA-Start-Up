@@ -1,0 +1,27 @@
+export const EngInfo = 
+    {
+        locationBar:`Choose Location`,
+        languageSettings: `Choose a language`,
+        dontHaveAccount: `Don't have an account?`,
+        cafes:`Cafes`,
+        restaurants:`Restaurants`,
+        welcome:`Welcome`,
+        login:`Login`,
+        submit: `Submit`,
+        register:`Register`,
+        tbilisi:`Tbilisi`,
+        kutaisi:`Kutaisi`,
+        telavi: `Telavi`,
+        placeOffers:`What this place offers`,
+        whereUat:`Where you'll be`,
+        reviews:`Reviews`,
+        Addreview:`Add a review`,
+        send:`Send`,
+        logout:`Log out`,
+        greet:`Hey`,
+        linkSent:`Link sent to your email, verify your account`,
+        contactUs: `CONTACT US`,
+        currentCity: `Current city`,
+        checkDeveloper: `Check the developer`,
+        back:`back`
+    }
