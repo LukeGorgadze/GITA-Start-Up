@@ -1,13 +1,6 @@
 import React, { useState } from 'react'
-import { FaRegLemon } from 'react-icons/fa'
 import { AnimatePresence, motion } from 'framer-motion';
-import { IoEarthSharp, IoSearchCircle } from 'react-icons/io5'
-import { MdLanguage } from 'react-icons/md'
-import { HiUserCircle } from 'react-icons/hi'
-import { FiMenu } from 'react-icons/fi'
 import { useGlobalContext } from '../context'
-import { cities } from '../data/Cities'
-import { Link } from 'react-router-dom';
 import 'react-toastify/dist/ReactToastify.css';
 import SearchBar from './SearchBar'
 import LemonLogo from './LemonLogo';
