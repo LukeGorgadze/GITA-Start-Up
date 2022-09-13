@@ -22,7 +22,7 @@ mongoose.connect(process.env.MONGO_URI, {
   })
 
   app.use(cors({
-    origin: ["http://localhost:3000"],
+    origin: ["https://lim01.herokuapp.com/"],
     method: ["GET","POST"],
     credentials: true
 }))
