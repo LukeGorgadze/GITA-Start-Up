@@ -21,11 +21,11 @@ mongoose.connect(process.env.MONGO_URI, {
     console.log(err.message)
   })
 
-  app.use(cors({
-    origin: ["https://lim01.herokuapp.com/"],
-    method: ["GET","POST"],
-    credentials: true
-}))
+//   app.use(cors({
+//     origin: ["https://lim01.herokuapp.com/"],
+//     method: ["GET","POST"],
+//     credentials: true
+// }))
 
 
 app.use(cookieParser())
