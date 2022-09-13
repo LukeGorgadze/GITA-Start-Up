@@ -2,8 +2,8 @@ import React, { ChangeEventHandler, useMemo } from 'react'
 import { useNavigate, useParams, } from "react-router-dom";
 import { Stack, Rating } from "@mui/material"
 import { useState, useEffect, useRef } from 'react'
-import { HiOutlineStar, HiStar } from 'react-icons/hi'
 import { IoArrowBack } from 'react-icons/io5'
+import {AiOutlineStar,AiFillStar} from 'react-icons/ai'
 import { motion } from 'framer-motion';
 import { GoogleMap, useLoadScript, Marker } from "@react-google-maps/api";
 import { MarkerF } from '@react-google-maps/api'
@@ -259,8 +259,8 @@ function Map(props: propType) {
               <h1 className='w-auto font-bold text-[20px]'>{comment.username ? comment.username : "Guest"}</h1>
               <Stack spacing={5} className=''>
                 <Rating name="read-only"
-                  icon={<HiStar />}
-                  emptyIcon={<HiOutlineStar />}
+                  icon={<AiFillStar />}
+                  emptyIcon={<AiOutlineStar />}
                   size='large' value={comment?.rating} />
               </Stack>
             </div>
@@ -279,8 +279,8 @@ function Map(props: propType) {
             <div className='flex flex-col'>
               <div className='mt-3'>
                 <Rating name="simple-controlled"
-                  icon={<HiStar />}
-                  emptyIcon={<HiOutlineStar />}
+                  icon={<AiFillStar />}
+                  emptyIcon={<AiOutlineStar />}
                   size='large' value={rating} onChange={handleChange} />
               </div>
 
