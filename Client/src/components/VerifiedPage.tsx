@@ -7,7 +7,7 @@ const VerifiedPage = (props: any) => {
     verifyUser(confirmationCode)
     return (
         <div>
-            <header className="flex flex-col w-[70%] mx-auto items-center mt-[150px]">
+            <header className="flex flex-col w-[70%] mx-auto items-center mt-[150px] min-h-[700px]">
                 <h1 className='font-bold text-[30px]'>
                     Account confirmed! ✅
                 </h1>
