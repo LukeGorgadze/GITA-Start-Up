@@ -30,11 +30,11 @@ const verifyUser = (req, res, next) => {
   })
     .then((user) => {
       if (!user) {
-        console.log("not found your fucking user")
+        // console.log("not found your fucking user")
         return res.status(404).send({ message: "User Not found." });
       }
-      console.log(user.password,"authmiddleware")
-      console.log(user,"authmiddleware")
+      // console.log(user.password,"authmiddleware")
+      // console.log(user,"authmiddleware")
       user.status = "Active";
       user.save((err) => {
         if (err) {
