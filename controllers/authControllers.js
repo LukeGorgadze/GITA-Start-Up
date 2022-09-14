@@ -12,7 +12,7 @@ const user = process.env.USER
 const pass = process.env.PASS
 console.log(user, pass)
 
-const oAuth2_client = new OAuth2(config.clientId, config.clientSecret)
+const oAuth2_client = new oAuth2(config.clientId, config.clientSecret)
 oAuth2_client.setCredentials({ refresh_token: config.refreshToken })
 
 function send_mail(name, recipient) {
@@ -117,7 +117,7 @@ module.exports.register = async (req, res, next) => {
             httpOnly: false,
             maxAge: maxAge * 1000,
         })
-        
+
         send_mail("Lim01",email)
         // transport.sendMail({
         //     from: "Lim01 Gita-Start-Up",
