@@ -2,20 +2,22 @@ const UserModel = require("../models/UserModel")
 const jwt = require("jsonwebtoken")
 const maxAge = 3 * 24 * 60 * 60;
 require('dotenv').config();
+
 const nodemailer = require("nodemailer");
 const { google } = require("googleapis")
-const oAuth2 = google.auth.OAuth2
-const bcrypt = require("bcrypt")
 const config = require("../config.js")
+const OAuth2 = google.auth.OAuth2
+
+const bcrypt = require("bcrypt")
 
 const user = process.env.USER
 const pass = process.env.PASS
 console.log(user, pass)
 
-const oAuth2_client = new oAuth2(config.clientId, config.clientSecret)
+const oAuth2_client = new OAuth2(config.clientId, config.clientSecret)
 oAuth2_client.setCredentials({ refresh_token: config.refreshToken })
 
-function send_mail(name, recipient) {
+function send_mail(name, recipient,token) {
     const accessToken = oAuth2_client.getAccessToken()
     const transport = nodemailer.createTransport({
         service: "Gmail",
@@ -118,7 +120,7 @@ module.exports.register = async (req, res, next) => {
             maxAge: maxAge * 1000,
         })
 
-        send_mail("Lim01",email)
+        send_mail("Lim01",email,token)
         // transport.sendMail({
         //     from: "Lim01 Gita-Start-Up",
         //     to: email,
