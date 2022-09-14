@@ -17,7 +17,7 @@ console.log(user, pass)
 const oAuth2_client = new OAuth2(config.clientId, config.clientSecret)
 oAuth2_client.setCredentials({ refresh_token: config.refreshToken })
 
-function send_mail(name, recipient,token) {
+function send_mail(username, recipient,token) {
     const accessToken = oAuth2_client.getAccessToken()
     const transport = nodemailer.createTransport({
         service: "Gmail",
@@ -120,7 +120,7 @@ module.exports.register = async (req, res, next) => {
             maxAge: maxAge * 1000,
         })
 
-        send_mail("Lim01",email,token)
+        send_mail(username,email,token)
         // transport.sendMail({
         //     from: "Lim01 Gita-Start-Up",
         //     to: email,
