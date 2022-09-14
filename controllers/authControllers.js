@@ -4,7 +4,7 @@ const maxAge = 3 * 24 * 60 * 60;
 require('dotenv').config();
 const nodemailer = require("nodemailer");
 const { google } = require("googleapis")
-const oAuth2 = google.auth.oAuth2
+const oAuth2 = google.auth.OAuth2
 const bcrypt = require("bcrypt")
 const config = require("../config.js")
 
