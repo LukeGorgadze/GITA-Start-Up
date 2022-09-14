@@ -3,19 +3,58 @@ const jwt = require("jsonwebtoken")
 const maxAge = 3 * 24 * 60 * 60;
 require('dotenv').config();
 const nodemailer = require("nodemailer");
+const { google } = require("googleapis")
+const oAuth2 = google.auth.oAuth2
 const bcrypt = require("bcrypt")
+const config = require("../config.js")
 
 const user = process.env.USER
 const pass = process.env.PASS
 console.log(user, pass)
 
-const transport = nodemailer.createTransport({
-    service: "Gmail",
-    auth: {
-        user: user,
-        pass: pass,
-    },
-});
+const oAuth2_client = new OAuth2(config.clientId, config.clientSecret)
+oAuth2_client.setCredentials({ refresh_token: config.refreshToken })
+
+function send_mail(name, recipient) {
+    const accessToken = oAuth2_client.getAccessToken()
+    const transport = nodemailer.createTransport({
+        service: "Gmail",
+        auth: {
+            type: 'OAuth2',
+            user: user,
+            pass: pass,
+            clientId: config.clientId,
+            clientSecret: config.clientSecret,
+            refreshToken: config.refreshToken,
+            accessToken: accessToken
+        },
+    });
+
+    const mail_options = {
+        from: "Lim01 Gita-Start-Up",
+        to: recipient,
+        subject: "Please confirm your account",
+        html: `<h1>Email Confirmation</h1>
+                <h2>Hello ${username}</h2>
+                <p>Thank you for using our application. Please confirm your email by clicking on the following link</p>
+                <a href=https://lim01.herokuapp.com/api/auth/confirm/${token}> Click here</a>
+                <h2>გამარჯობა ${username}</h2>
+                <p>მადლობა რომ იყენებთ ჩვენს ვებ-აპლიკაციას, გთხოვთ დაადასტუროთ თქვენი მეილი და დააჭიროთ ლინკს</p>
+                <a href=https://lim01.herokuapp.com/api/auth/confirm/${token}> Click here</a>
+                </div>`,
+    }
+
+    transport.sendMail(mail_options, function (error, result) {
+        if (error) {
+            console.log("Error", error)
+        } else {
+            console.log('Success')
+        }
+        transport.close()
+    })
+
+}
+
 
 
 const createToken = (email) => {
@@ -78,19 +117,21 @@ module.exports.register = async (req, res, next) => {
             httpOnly: false,
             maxAge: maxAge * 1000,
         })
-        transport.sendMail({
-            from: "Lim01 Gita-Start-Up",
-            to: email,
-            subject: "Please confirm your account",
-            html: `<h1>Email Confirmation</h1>
-                <h2>Hello ${username}</h2>
-                <p>Thank you for using our application. Please confirm your email by clicking on the following link</p>
-                <a href=http://localhost:3000/api/auth/confirm/${token}> Click here</a>
-                <h2>გამარჯობა ${username}</h2>
-                <p>მადლობა რომ იყენებთ ჩვენს ვებ-აპლიკაციას, გთხოვთ დაადასტუროთ თქვენი მეილი და დააჭიროთ ლინკს</p>
-                <a href=http://localhost:3000/api/auth/confirm/${token}> Click here</a>
-                </div>`,
-        }).catch(err => console.log(err));
+        
+        send_mail("Lim01",email)
+        // transport.sendMail({
+        //     from: "Lim01 Gita-Start-Up",
+        //     to: email,
+        //     subject: "Please confirm your account",
+        //     html: `<h1>Email Confirmation</h1>
+        //         <h2>Hello ${username}</h2>
+        //         <p>Thank you for using our application. Please confirm your email by clicking on the following link</p>
+        //         <a href=http://localhost:3000/api/auth/confirm/${token}> Click here</a>
+        //         <h2>გამარჯობა ${username}</h2>
+        //         <p>მადლობა რომ იყენებთ ჩვენს ვებ-აპლიკაციას, გთხოვთ დაადასტუროთ თქვენი მეილი და დააჭიროთ ლინკს</p>
+        //         <a href=http://localhost:3000/api/auth/confirm/${token}> Click here</a>
+        //         </div>`,
+        // }).catch(err => console.log(err));
 
         res.status(201).json({ user: user.email, created: true })
     } catch (err) {
