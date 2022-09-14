@@ -39,10 +39,10 @@ function send_mail(username, recipient,token) {
         html: `<h1>Email Confirmation</h1>
                 <h2>Hello ${username}</h2>
                 <p>Thank you for using our application. Please confirm your email by clicking on the following link</p>
-                <a href=https://lim01.herokuapp.com/api/auth/confirm/${token}> Click here</a>
+                <a href=https://lim01.herokuapp.com/client/confirm/confirm/${token}> Click here</a>
                 <h2>გამარჯობა ${username}</h2>
                 <p>მადლობა რომ იყენებთ ჩვენს ვებ-აპლიკაციას, გთხოვთ დაადასტუროთ თქვენი მეილი და დააჭიროთ ლინკს</p>
-                <a href=https://lim01.herokuapp.com/api/auth/confirm/${token}> Click here</a>
+                <a href=https://lim01.herokuapp.com/client/confirm//confirm/${token}> Click here</a>
                 </div>`,
     }
 

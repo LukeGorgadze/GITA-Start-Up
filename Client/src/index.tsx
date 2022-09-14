@@ -30,7 +30,7 @@ root.render(
             <Route path='/restr' element={<RestrPage />} />
             <Route path='/cafe/:id' element={<Place placeType={0} />} />
             <Route path='/restr/:id' element={<Place placeType={1} />} />
-            <Route path='/api/auth/confirm/:confirmationCode' element={<VerifiedPage />} />
+            <Route path='/client/confirm/:confirmationCode' element={<VerifiedPage />} />
             <Route path='*' element={<PageNotFound />} />
           </Routes>
           <Footer />
