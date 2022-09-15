@@ -1,1 +1,0 @@
-# GITA-Start-Up
